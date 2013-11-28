@@ -98,39 +98,6 @@ function imagex_editorial_desk_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_assignment_content_type'
-  $field_bases['field_assignment_content_type'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_assignment_content_type',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'foreign keys' => array(
-      'value' => array(
-        'columns' => array(
-          'value' => 'name',
-        ),
-        'table' => 'value',
-      ),
-    ),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'bundle_name_reference',
-    'settings' => array(
-      'allowed_values_function' => 'bundle_name_reference_allowed_values',
-      'entity_type' => 'node',
-    ),
-    'translatable' => 0,
-    'type' => 'bundle_name_reference',
-  );
-
   // Exported field_base: 'field_assignment_deadline'
   $field_bases['field_assignment_deadline'] = array(
     'active' => 1,
@@ -223,6 +190,35 @@ function imagex_editorial_desk_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_assignment_user_notify'
+  $field_bases['field_assignment_user_notify'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_assignment_user_notify',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
+    'foreign keys' => array(),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
   );
 
   return $field_bases;

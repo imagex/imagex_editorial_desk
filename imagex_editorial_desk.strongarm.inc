@@ -15,11 +15,21 @@ function imagex_editorial_desk_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_assignment__assignment';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '0',
         ),
       ),
       'display' => array(),

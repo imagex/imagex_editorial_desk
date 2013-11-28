@@ -18,10 +18,10 @@ function imagex_editorial_desk_field_default_field_instances() {
     'description' => 'The user who will be assigned to complete this assignment.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
         'weight' => 3,
@@ -49,7 +49,7 @@ function imagex_editorial_desk_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 34,
+      'weight' => 4,
     ),
     'workbench_access_field' => 0,
   );
@@ -59,13 +59,13 @@ function imagex_editorial_desk_field_default_field_instances() {
     'bundle' => 'assignment',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Internal, admin only field. Records the assignment to content relation if content is internal.',
+    'description' => 'The content which should be worked on as part of this assignment. If this content doesn\'t exist yet you can create it by clicking the "plus" icon on the right side which will allow you to create new content and then redirect you back to this form (existing data is saved).',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'entityreference',
         'settings' => array(
-          'link' => FALSE,
+          'link' => 1,
         ),
         'type' => 'entityreference_label',
         'weight' => 4,
@@ -78,9 +78,11 @@ function imagex_editorial_desk_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'assignment',
+    'entityconnect_unload_add' => 0,
+    'entityconnect_unload_edit' => 1,
     'field_name' => 'field_assignment_content_node',
     'label' => 'Assignment Content',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -93,47 +95,7 @@ function imagex_editorial_desk_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 35,
-    ),
-    'workbench_access_field' => 0,
-  );
-
-  // Exported field_instance: 'assignment-assignment-field_assignment_content_type'
-  $field_instances['assignment-assignment-field_assignment_content_type'] = array(
-    'bundle' => 'assignment',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Select the type of content this assignment should create. ie. news, event',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'assignment',
-    'field_name' => 'field_assignment_content_type',
-    'label' => 'Assignment Content Type',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => 0,
-      ),
-      'type' => 'options_select',
-      'weight' => 36,
+      'weight' => 6,
     ),
     'workbench_access_field' => 0,
   );
@@ -145,7 +107,7 @@ function imagex_editorial_desk_field_default_field_instances() {
     'description' => 'The deadline date that this assignment should be completed by.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'date',
         'settings' => array(
           'format_type' => 'long',
@@ -187,7 +149,7 @@ function imagex_editorial_desk_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 32,
+      'weight' => 2,
     ),
     'workbench_access_field' => 0,
   );
@@ -250,7 +212,7 @@ function imagex_editorial_desk_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 31,
+      'weight' => 1,
     ),
     'workbench_access_field' => 0,
   );
@@ -263,7 +225,7 @@ function imagex_editorial_desk_field_default_field_instances() {
     'description' => 'Define the status of the assignment. This will automatically be update as process is made on the assignment.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
@@ -290,7 +252,50 @@ function imagex_editorial_desk_field_default_field_instances() {
         'apply_chosen' => 0,
       ),
       'type' => 'options_select',
-      'weight' => 33,
+      'weight' => 3,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'assignment-assignment-field_assignment_user_notify'
+  $field_instances['assignment-assignment-field_assignment_user_notify'] = array(
+    'bundle' => 'assignment',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Checking this box will notify the user assigned about this assignment.',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'assignment',
+    'field_name' => 'field_assignment_user_notify',
+    'label' => 'Notify Assigned User',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 5,
     ),
     'workbench_access_field' => 0,
   );
@@ -299,14 +304,14 @@ function imagex_editorial_desk_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Assigned User');
   t('Assignment Content');
-  t('Assignment Content Type');
+  t('Checking this box will notify the user assigned about this assignment.');
   t('Deadline');
   t('Define the status of the assignment. This will automatically be update as process is made on the assignment.');
   t('Description');
   t('Description of the assignment.');
-  t('Internal, admin only field. Records the assignment to content relation if content is internal.');
-  t('Select the type of content this assignment should create. ie. news, event');
+  t('Notify Assigned User');
   t('Status');
+  t('The content which should be worked on as part of this assignment. If this content doesn\'t exist yet you can create it by clicking the "plus" icon on the right side which will allow you to create new content and then redirect you back to this form (existing data is saved).');
   t('The deadline date that this assignment should be completed by.');
   t('The user who will be assigned to complete this assignment.');
 
