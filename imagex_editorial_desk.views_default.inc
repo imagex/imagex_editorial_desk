@@ -329,6 +329,126 @@ function imagex_editorial_desk_views_default_views() {
     ),
   );
   $handler->display->display_options['inherit_panels_path'] = '0';
+
+  /* Display: My Assignments Content pane */
+  $handler = $view->new_display('panel_pane', 'My Assignments Content pane', 'panel_pane_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'My Assignments';
+  $handler->display->display_options['defaults']['link_display'] = FALSE;
+  $handler->display->display_options['link_display'] = 'custom_url';
+  $handler->display->display_options['link_url'] = 'admin/content/editorial-desk';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'date_views_pager';
+  $handler->display->display_options['pager']['options']['link_format'] = 'clean';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'delete_link' => 'delete_link',
+    'edit_link' => 'edit_link',
+  );
+  $handler->display->display_options['row_options']['separator'] = ' | ';
+  $handler->display->display_options['row_options']['hide_empty'] = TRUE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Assignment: Id */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'eck_assignment';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['fields']['id']['label'] = '';
+  $handler->display->display_options['fields']['id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['id']['element_label_colon'] = FALSE;
+  /* Field: Assignment: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'eck_assignment';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'assignment/assignment/[id]';
+  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Assignment: Status */
+  $handler->display->display_options['fields']['field_assignment_status']['id'] = 'field_assignment_status';
+  $handler->display->display_options['fields']['field_assignment_status']['table'] = 'field_data_field_assignment_status';
+  $handler->display->display_options['fields']['field_assignment_status']['field'] = 'field_assignment_status';
+  $handler->display->display_options['fields']['field_assignment_status']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_assignment_status']['element_label_type'] = 'span';
+  /* Field: Assignment: Deadline */
+  $handler->display->display_options['fields']['field_assignment_deadline']['id'] = 'field_assignment_deadline';
+  $handler->display->display_options['fields']['field_assignment_deadline']['table'] = 'field_data_field_assignment_deadline';
+  $handler->display->display_options['fields']['field_assignment_deadline']['field'] = 'field_assignment_deadline';
+  $handler->display->display_options['fields']['field_assignment_deadline']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_assignment_deadline']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_assignment_deadline']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Assignment: Assigned User (field_assignment_assigned_user) */
+  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['id'] = 'field_assignment_assigned_user_target_id';
+  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['table'] = 'field_data_field_assignment_assigned_user';
+  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['field'] = 'field_assignment_assigned_user_target_id';
+  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Assignment: Deadline (field_assignment_deadline) */
+  $handler->display->display_options['filters']['field_assignment_deadline_value']['id'] = 'field_assignment_deadline_value';
+  $handler->display->display_options['filters']['field_assignment_deadline_value']['table'] = 'field_data_field_assignment_deadline';
+  $handler->display->display_options['filters']['field_assignment_deadline_value']['field'] = 'field_assignment_deadline_value';
+  $handler->display->display_options['filters']['field_assignment_deadline_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_assignment_deadline_value']['default_date'] = 'now';
+  /* Filter criterion: Assignment: Status (field_assignment_status) */
+  $handler->display->display_options['filters']['field_assignment_status_value']['id'] = 'field_assignment_status_value';
+  $handler->display->display_options['filters']['field_assignment_status_value']['table'] = 'field_data_field_assignment_status';
+  $handler->display->display_options['filters']['field_assignment_status_value']['field'] = 'field_assignment_status_value';
+  $handler->display->display_options['filters']['field_assignment_status_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_assignment_status_value']['expose']['operator_id'] = 'field_assignment_status_value_op';
+  $handler->display->display_options['filters']['field_assignment_status_value']['expose']['label'] = 'Status';
+  $handler->display->display_options['filters']['field_assignment_status_value']['expose']['operator'] = 'field_assignment_status_value_op';
+  $handler->display->display_options['filters']['field_assignment_status_value']['expose']['identifier'] = 'field_assignment_status_value';
+  $handler->display->display_options['filters']['field_assignment_status_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_assignment_status_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    7 => 0,
+    5 => 0,
+    6 => 0,
+    4 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_assignment_status_value']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['pane_category']['name'] = 'ImageX';
+  $handler->display->display_options['pane_category']['weight'] = '0';
+  $handler->display->display_options['allow']['use_pager'] = 'use_pager';
+  $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 'link_to_view';
+  $handler->display->display_options['allow']['more_link'] = 'more_link';
+  $handler->display->display_options['allow']['path_override'] = 'path_override';
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
+  $handler->display->display_options['allow']['fields_override'] = 'fields_override';
+  $handler->display->display_options['argument_input'] = array(
+    'field_assignment_assigned_user_target_id' => array(
+      'type' => 'user',
+      'context' => 'entity:assignment.field_assignment_assigned_user',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Assignment: Assigned User',
+    ),
+  );
+  $handler->display->display_options['inherit_panels_path'] = '0';
   $export['imagex_editorial_desk'] = $view;
 
   return $export;
