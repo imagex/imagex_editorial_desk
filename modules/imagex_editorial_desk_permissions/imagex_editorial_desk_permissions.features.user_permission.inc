@@ -342,6 +342,7 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
       'Content Manager' => 'Content Manager',
       'Super User' => 'Super User',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -354,6 +355,7 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
       'Content Manager' => 'Content Manager',
       'Super User' => 'Super User',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
