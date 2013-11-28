@@ -352,6 +352,14 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['row_options']['separator'] = ' | ';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'You currently have no content assignments to complete.';
+  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Assignment: Id */
   $handler->display->display_options['fields']['id']['id'] = 'id';
@@ -393,7 +401,7 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['id'] = 'field_assignment_assigned_user_target_id';
   $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['table'] = 'field_data_field_assignment_assigned_user';
   $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['field'] = 'field_assignment_assigned_user_target_id';
-  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['default_action'] = 'empty';
   $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_assignment_assigned_user_target_id']['summary']['format'] = 'default_summary';
