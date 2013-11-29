@@ -2,9 +2,15 @@
 
 /**
  * @file
- * Rules integration for the Flag module.
+ * Rules integration for the imagex_editorial_desk.module.
  */
 
+/**
+ * Implements hook_rules_file_info().
+ */
+function imagex_editorial_desk_rules_file_info() {
+  return array('imagex_editorial_desk.rules_eval');
+}
 
 /**
  * Implements hook_rules_condition_info()
@@ -12,6 +18,7 @@
  */
 function imagex_editorial_desk_rules_condition_info() {
   return array(
+    // Checks if user can edit node
     'imagex_editorial_desk_entity_access' => array(
       'label' => t('User has entity access'),
       'parameter' => array(
@@ -39,10 +46,12 @@ function imagex_editorial_desk_rules_condition_info() {
           'default value' => NULL,
         ),
       ),
-      'group' => t('Entities'),
+      'group' => t('Editorial Desk'),
       'base' => 'imagex_editorial_desk_rules_condition_entity_access',
     ),
-    'imagex_editorial_desk_user_edit_node_access' => array(
+    
+    // Checks if user has edit any or own permission for given content type
+    'imagex_editorial_desk_entity_edit_permissions' => array(
       'label' => t('User has edit node access'),
       'parameter' => array(
         'entity' => array(
@@ -61,9 +70,9 @@ function imagex_editorial_desk_rules_condition_info() {
           'default value' => NULL,
         ),
       ),
-      'group' => t('Entities'),
+      'group' => t('Editorial Desk'),
       'base' => 'imagex_editorial_desk_rules_condition_entity_edit_permissions',
-    ),   
+    ),     
   );
 }
 
@@ -75,26 +84,4 @@ function imagex_editorial_desk_rules_condition_entity_access_op_options(RulesAbs
     'view' => t('View'),
     'update' => t('Edit'),
   );
-}
-
-/**
- * Condition: User has access to field & parent entity (imagex_editorial_desk_user_edit_node_access)
- *
- * Maybe the user has right permissions but access denied by Workbench or similar
- */
-function imagex_editorial_desk_rules_condition_entity_access(EntityDrupalWrapper $wrapper, $op, $account = NULL) {
-  return entity_access($op, $wrapper->type(), $wrapper->value(), $account);
-}
-
-/**
- * Condition: User has "edit any" access for assign content type (imagex_editorial_desk_user_edit_node_access)
- */
-function imagex_editorial_desk_rules_condition_entity_edit_permissions(EntityDrupalWrapper $wrapper, $account = NULL) {
-  // Admin permissions
-  $admin_access = user_access('bypass node access', $account) || user_access('administer content', $account);
-
-  // Edit permissions
-  $edit_access = user_access('edit any ' . $wrapper->value()->type . ' content', $account) || user_access('edit own ' . $wrapper->value()->type . ' content', $account);
-  
-  return $admin_access || $edit_access;
 }
