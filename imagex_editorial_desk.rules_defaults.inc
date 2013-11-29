@@ -9,6 +9,84 @@
  */
 function imagex_editorial_desk_default_rules_configuration() {
   $items = array();
+  $items['rules_imagex_editorial_desk_assignment_content'] = entity_import('rules_config', '{ "rules_imagex_editorial_desk_assignment_content" : {
+      "LABEL" : "ImageX Editorial Desk Assignment Content",
+      "PLUGIN" : "rule set",
+      "TAGS" : [ "imagex_editorial_desk" ],
+      "REQUIRES" : [ "rules", "imagex_editorial_desk" ],
+      "USES VARIABLES" : {
+        "assignment" : { "label" : "Assignment", "type" : "assignment" },
+        "entity_access" : { "label" : "Entity Access", "type" : "boolean" },
+        "entity_edit_access" : { "label" : "Edit Access", "type" : "boolean" }
+      },
+      "RULES" : [
+        { "RULE" : {
+            "IF" : [
+              { "entity_has_field" : {
+                  "entity" : [ "assignment" ],
+                  "field" : "field_assignment_assigned_user"
+                }
+              },
+              { "entity_has_field" : { "entity" : [ "assignment" ], "field" : "field_assignment_content_node" } },
+              { "entity_has_field" : { "entity" : [ "assignment" ], "field" : "field_assignment_status" } },
+              { "NOT data_is_empty" : { "data" : [ "assignment:field-assignment-assigned-user" ] } },
+              { "NOT data_is_empty" : { "data" : [ "assignment:field-assignment-content-node" ] } },
+              { "imagex_editorial_desk_entity_access" : {
+                  "entity" : [ "assignment:field-assignment-content-node" ],
+                  "op" : "update",
+                  "account" : [ "assignment:field-assignment-assigned-user" ]
+                }
+              }
+            ],
+            "DO" : [ { "data_set" : { "data" : [ "entity-access" ], "value" : 1 } } ],
+            "LABEL" : "Check Assigned User Content Edit Access"
+          }
+        },
+        { "RULE" : {
+            "IF" : [
+              { "entity_has_field" : { "entity" : [ "assignment" ], "field" : "field_assignment_content_node" } },
+              { "entity_has_field" : {
+                  "entity" : [ "assignment" ],
+                  "field" : "field_assignment_assigned_user"
+                }
+              },
+              { "imagex_editorial_desk_user_edit_node_access" : {
+                  "entity" : [ "assignment:field-assignment-content-node" ],
+                  "account" : [ "assignment:field-assignment-assigned-user" ]
+                }
+              }
+            ],
+            "DO" : [
+              { "data_set" : {
+                  "data" : [ "assignment:field-assignment-content-node:author" ],
+                  "value" : [ "assignment:field-assignment-assigned-user" ]
+                }
+              },
+              { "data_set" : { "data" : [ "entity-edit-access" ], "value" : 1 } }
+            ],
+            "LABEL" : "Check Assigned User Content Edit Permission"
+          }
+        },
+        { "RULE" : {
+            "IF" : [
+              { "entity_has_field" : { "entity" : [ "assignment" ], "field" : "field_assignment_content_node" } },
+              { "data_is_empty" : { "data" : [ "entity-access" ] } },
+              { "data_is_empty" : { "data" : [ "entity-edit-access" ] } }
+            ],
+            "DO" : [
+              { "drupal_message" : {
+                  "message" : "The assigned user (\\u003Ca href=\\u0022[assignment:field-assignment-assigned-user:url]\\u0022\\u003E[assignment:field-assignment-assigned-user:name]\\u003C\\/a\\u003E) does not have access to edit the content item (\\u003Ca href=\\u0022[assignment:field-assignment-content-node:url]\\u0022\\u003E[assignment:field-assignment-content-node:title]\\u003C\\/a\\u003E) associated with this assignment.\\u003Cbr \\/\\u003E\\u003Cbr \\/\\u003E\\r\\nEnsure the following:\\u003Cbr \\/\\u003E\\r\\n1. The assigned user has the correct user role and that role has the \\u0022edit any [assignment:field-assignment-content-node:type] content\\u0022 or \\u0022edit own [assignment:field-assignment-content-node:type] content\\u0022 permissions as well \\u0022View List of Assignment Assignment Entities\\u0022 \\u0026 \\u0022View Assignment Assignment Entities\\u0022 permission.\\u003Cbr \\/\\u003E\\r\\n2. If this content type is under moderation you may also need to ensure that the user is assigned to the same moderation section has the content.",
+                  "type" : "error",
+                  "repeat" : 0
+                }
+              }
+            ],
+            "LABEL" : "Assigned User Content Edit Access Denied"
+          }
+        }
+      ]
+    }
+  }');
   $items['rules_imagex_editorial_desk_assignment_notify_assigned'] = entity_import('rules_config', '{ "rules_imagex_editorial_desk_assignment_notify_assigned" : {
       "LABEL" : "ImageX Editorial Desk Assignment Notify (Assigned)",
       "PLUGIN" : "rule set",
@@ -98,6 +176,12 @@ function imagex_editorial_desk_default_rules_configuration() {
       "REQUIRES" : [ "rules", "eck" ],
       "ON" : [ "assignment_insert", "assignment_update" ],
       "DO" : [
+        { "component_rules_imagex_editorial_desk_assignment_content" : {
+            "assignment" : [ "assignment" ],
+            "entity_access" : 0,
+            "entity_edit_access" : 0
+          }
+        },
         { "component_rules_imagex_editorial_desk_assignment_notify_assigned" : { "assignment" : [ "assignment" ] } }
       ]
     }
