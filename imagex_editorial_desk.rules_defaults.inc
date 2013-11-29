@@ -31,7 +31,7 @@ function imagex_editorial_desk_default_rules_configuration() {
               { "entity_has_field" : { "entity" : [ "assignment" ], "field" : "field_assignment_status" } },
               { "NOT data_is_empty" : { "data" : [ "assignment:field-assignment-assigned-user" ] } },
               { "NOT data_is_empty" : { "data" : [ "assignment:field-assignment-content-node" ] } },
-              { "entity_access" : {
+              { "imagex_editorial_desk_entity_access" : {
                   "entity" : [ "assignment:field-assignment-content-node" ],
                   "op" : "update",
                   "account" : [ "assignment:field-assignment-assigned-user" ]
@@ -50,7 +50,7 @@ function imagex_editorial_desk_default_rules_configuration() {
                   "field" : "field_assignment_assigned_user"
                 }
               },
-              { "user_edit_node_access" : {
+              { "imagex_editorial_desk_user_edit_node_access" : {
                   "entity" : [ "assignment:field-assignment-content-node" ],
                   "account" : [ "assignment:field-assignment-assigned-user" ]
                 }

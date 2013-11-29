@@ -12,7 +12,7 @@
  */
 function imagex_editorial_desk_rules_condition_info() {
   return array(
-    'entity_access' => array(
+    'imagex_editorial_desk_entity_access' => array(
       'label' => t('User has entity access'),
       'parameter' => array(
         'entity' => array(
@@ -42,7 +42,7 @@ function imagex_editorial_desk_rules_condition_info() {
       'group' => t('Entities'),
       'base' => 'imagex_editorial_desk_rules_condition_entity_access',
     ),
-    'user_edit_node_access' => array(
+    'imagex_editorial_desk_user_edit_node_access' => array(
       'label' => t('User has edit node access'),
       'parameter' => array(
         'entity' => array(
@@ -78,7 +78,7 @@ function imagex_editorial_desk_rules_condition_entity_access_op_options(RulesAbs
 }
 
 /**
- * Condition: User has access to field & parent entity
+ * Condition: User has access to field & parent entity (imagex_editorial_desk_user_edit_node_access)
  *
  * Maybe the user has right permissions but access denied by Workbench or similar
  */
@@ -87,17 +87,14 @@ function imagex_editorial_desk_rules_condition_entity_access(EntityDrupalWrapper
 }
 
 /**
- * Condition: User has "edit any" access for assign content type
+ * Condition: User has "edit any" access for assign content type (imagex_editorial_desk_user_edit_node_access)
  */
 function imagex_editorial_desk_rules_condition_entity_edit_permissions(EntityDrupalWrapper $wrapper, $account = NULL) {
   // Admin permissions
-  if (user_access('bypass node access', $account) || user_access('administer content', $account)) {
-    return TRUE;
-  }
-  
+  $admin_access = user_access('bypass node access', $account) || user_access('administer content', $account);
+
   // Edit permissions
-  if (user_access('edit any ' . $wrapper->value()->type . ' content', $account) || user_access('edit own ' . $wrapper->value()->type . ' content', $account)) {
-    return TRUE;
-  }
-  return FALSE;
+  $edit_access = user_access('edit any ' . $wrapper->value()->type . ' content', $account) || user_access('edit own ' . $wrapper->value()->type . ' content', $account);
+  
+  return $admin_access || $edit_access;
 }
