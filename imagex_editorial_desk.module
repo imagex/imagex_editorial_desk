@@ -14,3 +14,39 @@ function imagex_editorial_desk_ctools_plugin_directory($owner, $plugin_type) {
     return 'plugins/' . $plugin_type;
   }
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function imagex_editorial_desk_form_alter(&$form, &$form_state, $form_id) {
+  // Hijack assignment entity validation
+  // Rules form support isn't sufficient so do this manually
+  if ($form_id == 'eck__entity__form_edit_assignment_assignment') {
+    $form['#validate'][] = 'imagex_editorial_desk_assignment_validate';
+  }
+}
+
+/**
+ * Custom validation hook for assignment entities
+ *
+ * Rules form or Entity Rules support isn't sufficient so do this manually
+ * as we need to set an error to make the form reload
+ */
+function imagex_editorial_desk_assignment_validate(&$form, &$form_state) {
+  // Only on save   
+  if ($form_state['clicked_button']['#value'] == t('Save')) {
+    $entity = $form_state['values']['entity'];
+    $validation_rules = array(
+      'rules_imagex_editorial_desk_assignment_node_has_assignment',
+      'rules_imagex_editorial_desk_assignment_user_has_content_access',
+    );
+    $error = array();
+    foreach ($validation_rules as $rule) {
+      // Rules provide "validation_fail" variable to trigger error
+      $error = rules_invoke_component($rule, $entity);
+      if (!empty($error[0])) {
+        form_set_error("field_");
+      }
+    }
+  }
+}
