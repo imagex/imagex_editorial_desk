@@ -42,6 +42,7 @@ features[field_instance][] = assignment-assignment-field_assignment_description
 features[field_instance][] = assignment-assignment-field_assignment_status
 features[field_instance][] = assignment-assignment-field_assignment_user_notify
 features[page_manager_pages][] = imagex_editorial_desk
+features[page_manager_pages][] = imagex_editorial_desk_my_assignments
 features[rules_config][] = rules_imagex_editorial_desk_assigned_user_as_author
 features[rules_config][] = rules_imagex_editorial_desk_assignment_node_has_assignment
 features[rules_config][] = rules_imagex_editorial_desk_assignment_notify_assigned
