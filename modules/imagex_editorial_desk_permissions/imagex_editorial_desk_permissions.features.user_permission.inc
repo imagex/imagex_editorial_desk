@@ -281,6 +281,20 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'entityconnect add button'.
+  $permissions['entityconnect add button'] = array(
+    'name' => 'entityconnect add button',
+    'roles' => array(),
+    'module' => 'entityconnect',
+  );
+
+  // Exported permission: 'entityconnect edit button'.
+  $permissions['entityconnect edit button'] = array(
+    'name' => 'entityconnect edit button',
+    'roles' => array(),
+    'module' => 'entityconnect',
+  );
+
   // Exported permission: 'manage assignment properties'.
   $permissions['manage assignment properties'] = array(
     'name' => 'manage assignment properties',
