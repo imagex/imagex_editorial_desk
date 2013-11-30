@@ -29,6 +29,11 @@ function imagex_editorial_desk_default_rules_configuration() {
                   "entity" : [ "assignment:field-assignment-content-node" ],
                   "account" : [ "assignment:field-assignment-assigned-user" ]
                 }
+              },
+              { "NOT data_is" : {
+                  "data" : [ "assignment:field-assignment-assigned-user" ],
+                  "value" : [ "assignment:field-assignment-content-node:author" ]
+                }
               }
             ],
             "DO" : [
@@ -120,7 +125,7 @@ function imagex_editorial_desk_default_rules_configuration() {
               { "mail" : {
                   "to" : "[assignment:field-assignment-assigned-user:mail]",
                   "subject" : "An editorial assignment has been assigned to you.",
-                  "message" : "This is an automated email to notify you that an editorial assignment has been assigned to you.\\r\\n\\r\\nView your assignment: [site:url]\\/assignment\\/assignment\\/[assignment:id]\\r\\nAssignment status: [assignment:field-assignment-status]\\r\\nAssignment was assigned by: [assignment-author:name] ([assignment-author:mail])",
+                  "message" : "This is an automated email to notify you that an editorial assignment has been assigned to you.\\r\\n\\r\\nView your assignment: [site:url]assignment\\/assignment\\/[assignment:id]\\r\\nAssignment status: [assignment:field-assignment-status]\\r\\nAssignment deadline: [assignment:field_assignment_deadline]\\r\\nAssignment was assigned by: [assignment-author:name] ([assignment-author:mail])",
                   "from" : "[assignment-author:mail]",
                   "language" : [ "" ]
                 }
@@ -157,7 +162,7 @@ function imagex_editorial_desk_default_rules_configuration() {
               { "mail" : {
                   "to" : "[assignment:field-assignment-assigned-user:mail]",
                   "subject" : "An editorial assignment assigned to you has been updated.",
-                  "message" : "This is an automated email to notify you that an editorial assignment assigned to you has been updated.\\r\\n\\r\\nView your assignment: [site:url]\\/assignment\\/assignment\\/[assignment:id]\\r\\nAssignment status: [assignment:field-assignment-status]\\r\\nAssignment was assigned by: [assignment-author-update:name] ([assignment-author-update:mail])",
+                  "message" : "This is an automated email to notify you that an editorial assignment assigned to you has been updated.\\r\\n\\r\\nView your assignment: [site:url]assignment\\/assignment\\/[assignment:id]\\r\\nAssignment status: [assignment:field-assignment-status]\\r\\nAssignment deadline: [assignment:field_assignment_deadline]\\r\\nAssignment was assigned by: [assignment-author-update:name] ([assignment-author-update:mail])",
                   "from" : "[assignment-author-update:mail]",
                   "language" : [ "" ]
                 }
@@ -192,6 +197,13 @@ function imagex_editorial_desk_default_rules_configuration() {
       },
       "RULES" : [
         { "RULE" : {
+            "DO" : [
+              { "component_rules_imagex_editorial_desk_assigned_user_as_author" : { "assignment" : [ "assignment" ] } }
+            ],
+            "LABEL" : "Make Assigned User Content Author"
+          }
+        },
+        { "RULE" : {
             "IF" : [
               { "entity_has_field" : {
                   "entity" : [ "assignment" ],
@@ -202,28 +214,17 @@ function imagex_editorial_desk_default_rules_configuration() {
               { "entity_has_field" : { "entity" : [ "assignment" ], "field" : "field_assignment_status" } },
               { "NOT data_is_empty" : { "data" : [ "assignment:field-assignment-assigned-user" ] } },
               { "NOT data_is_empty" : { "data" : [ "assignment:field-assignment-content-node" ] } },
-              { "AND" : [
-                  { "NOT imagex_editorial_desk_entity_access" : {
-                      "entity" : [ "assignment:field-assignment-content-node" ],
-                      "op" : "update",
-                      "account" : [ "assignment:field-assignment-assigned-user" ]
-                    }
-                  },
-                  { "OR" : [
-                      { "NOT imagex_editorial_desk_entity_edit_permissions" : {
-                          "entity" : [ "assignment:field-assignment-content-node" ],
-                          "account" : [ "assignment:field-assignment-assigned-user" ]
-                        }
-                      }
-                    ]
-                  }
-                ]
+              { "NOT imagex_editorial_desk_entity_access" : {
+                  "entity" : [ "assignment:field-assignment-content-node" ],
+                  "op" : "update",
+                  "account" : [ "assignment:field-assignment-assigned-user" ]
+                }
               }
             ],
             "DO" : [
               { "data_set" : { "data" : [ "validation-fail" ], "value" : 1 } },
               { "drupal_message" : {
-                  "message" : "The \\u0022Assigned User\\u0022 (\\u003Ca href=\\u0022[assignment:field-assignment-assigned-user:url]\\u0022\\u003E[assignment:field-assignment-assigned-user:name]\\u003C\\/a\\u003E) does not have access to edit the content item (\\u003Ca href=\\u0022[assignment:field-assignment-content-node:url]\\u0022\\u003E[assignment:field-assignment-content-node:title]\\u003C\\/a\\u003E) associated with this assignment.\\u003Cbr \\/\\u003E\\r\\nEnsure the following:\\r\\n\\u003Col\\u003E\\r\\n\\u003Cli\\u003EThe assigned user has the correct user role and that role has the following permissions: \\r\\n  \\u003Cul\\u003E\\r\\n    \\u003Cli\\u003E\\u0022\\u003Cem\\u003E[assignment:field-assignment-content-node:type]:\\u003C\\/em\\u003E edit any content\\u0022 or \\u0022\\u003Cem\\u003E[assignment:field-assignment-content-node:type]:\\u003C\\/em\\u003E edit own content\\u0022\\u003C\\/li\\u003E\\r\\n    \\u003Cli\\u003E\\u0022View List of Assignment Assignment Entities\\u0022 \\u0026 \\u0022View Assignment Assignment Entities\\u0022\\u003C\\/li\\u003E\\r\\n  \\u003C\\/ul\\u003E\\r\\n\\u003C\\/li\\u003E\\r\\n\\u003Cli\\u003EIf this content type is under moderation you may also need to ensure that the user is assigned to the same moderation section as the content.\\u003C\\/li\\u003E\\r\\n\\u003C\\/ol\\u003E",
+                  "message" : "The \\u0022Assigned User\\u0022 (\\u003Ca href=\\u0022[assignment:field-assignment-assigned-user:url]\\u0022\\u003E[assignment:field-assignment-assigned-user:name]\\u003C\\/a\\u003E) does not have access to edit the content item (\\u003Ca href=\\u0022[assignment:field-assignment-content-node:url]\\u0022\\u003E[assignment:field-assignment-content-node:title]\\u003C\\/a\\u003E) associated with this assignment.\\u003Cbr \\/\\u003E\\r\\nEnsure the following:\\r\\n\\u003Col\\u003E\\r\\n\\u003Cli\\u003EThe assigned user has the correct user role and that role has the following permissions: \\r\\n  \\u003Cul\\u003E\\r\\n    \\u003Cli\\u003E\\u0022\\u003Cem\\u003E[assignment:field-assignment-content-node:type]:\\u003C\\/em\\u003E edit own content\\u0022\\u003C\\/li\\u003E\\r\\n    \\u003Cli\\u003E\\u0022View List of Assignment Assignment Entities\\u0022\\u003C\\/li\\u003E \\r\\n    \\u003Cli\\u003E\\u0022View Assignment Assignment Entities\\u0022\\u003C\\/li\\u003E\\r\\n    \\u003Cli\\u003E\\u0022View Own Assigned Assignments\\u0022\\u003C\\/li\\u003E\\r\\n  \\u003C\\/ul\\u003E\\r\\n\\u003C\\/li\\u003E\\r\\n\\u003Cli\\u003EIf this content type is under moderation you may also need to ensure that the user is assigned to the same moderation section as the content.\\u003C\\/li\\u003E\\r\\n\\u003C\\/ol\\u003E",
                   "type" : "error",
                   "repeat" : 0
                 }
