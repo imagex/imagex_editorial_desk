@@ -125,7 +125,7 @@ function imagex_editorial_desk_default_rules_configuration() {
               { "mail" : {
                   "to" : "[assignment:field-assignment-assigned-user:mail]",
                   "subject" : "An editorial assignment has been assigned to you.",
-                  "message" : "This is an automated email to notify you that an editorial assignment has been assigned to you.\\r\\n\\r\\nView your assignment: [site:url]\\/assignment\\/assignment\\/[assignment:id]\\r\\nAssignment status: [assignment:field-assignment-status]\\r\\nAssignment was assigned by: [assignment-author:name] ([assignment-author:mail])",
+                  "message" : "This is an automated email to notify you that an editorial assignment has been assigned to you.\\r\\n\\r\\nView your assignment: [site:url]assignment\\/assignment\\/[assignment:id]\\r\\nAssignment status: [assignment:field-assignment-status]\\r\\nAssignment deadline: [assignment:field_assignment_deadline]\\r\\nAssignment was assigned by: [assignment-author:name] ([assignment-author:mail])",
                   "from" : "[assignment-author:mail]",
                   "language" : [ "" ]
                 }
@@ -162,7 +162,7 @@ function imagex_editorial_desk_default_rules_configuration() {
               { "mail" : {
                   "to" : "[assignment:field-assignment-assigned-user:mail]",
                   "subject" : "An editorial assignment assigned to you has been updated.",
-                  "message" : "This is an automated email to notify you that an editorial assignment assigned to you has been updated.\\r\\n\\r\\nView your assignment: [site:url]\\/assignment\\/assignment\\/[assignment:id]\\r\\nAssignment status: [assignment:field-assignment-status]\\r\\nAssignment was assigned by: [assignment-author-update:name] ([assignment-author-update:mail])",
+                  "message" : "This is an automated email to notify you that an editorial assignment assigned to you has been updated.\\r\\n\\r\\nView your assignment: [site:url]assignment\\/assignment\\/[assignment:id]\\r\\nAssignment status: [assignment:field-assignment-status]\\r\\nAssignment deadline: [assignment:field_assignment_deadline]\\r\\nAssignment was assigned by: [assignment-author-update:name] ([assignment-author-update:mail])",
                   "from" : "[assignment-author-update:mail]",
                   "language" : [ "" ]
                 }
