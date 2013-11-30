@@ -16,6 +16,34 @@ function imagex_editorial_desk_ctools_plugin_directory($owner, $plugin_type) {
 }
 
 /**
+ * Implements hook_permission().
+ */
+function imagex_editorial_desk_permission() {
+  // Add some customer permissions for "assigned" users
+  return array(
+    'view own assigned assignments' => array(
+      'title' => t('View Own Assigned Assignments'),
+      'description' => t('Allows user view access to assignments they are assigned to.'),
+    ),
+    'update own assigned assignments' => array(
+      'title' => t('Update Own Assigned Assignments'),
+      'description' => t('Allows user update access to assignments they are assigned to.'),
+    ),
+    'delete own assigned assignments' => array(
+      'title' => t('Delete Own Assigned Assignments'),
+      'description' => t('Allows user delete access to assignments they are assigned to.'),
+    ),    
+  );
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function imagex_editorial_desk_entity_info_alter(&$entity_info) {
+  $entity_info['assignment']['access callback'] = 'imagex_editorial_desk_assignment_entity_access';
+}
+
+/**
  * Implements hook_form_alter().
  */
 function imagex_editorial_desk_form_alter(&$form, &$form_state, $form_id) {
@@ -49,4 +77,32 @@ function imagex_editorial_desk_assignment_validate(&$form, &$form_state) {
       }
     }
   }
+}
+
+/**
+ * Custom access callback for assignments
+ */
+function imagex_editorial_desk_assignment_entity_access($op, $entity_or_bundle, $account = NULL, $entity_type_name) {
+  // Use global user if non passed
+  if (!isset($account)) {
+    global $user;
+    $account = $user;
+  }    
+    
+  // Call default ECK access function
+  $access = eck__entity_access($op, $entity_or_bundle, $account, $entity_type_name);
+  
+  // Now check our custom permissions & if user is assigned user
+  // We assume eck__entity_access is denying access to non-admin users
+  // if they are the assigned user & have correct "own" perms grant access
+  if (is_object($entity_or_bundle)) {
+    // We assume users can access asignments at any "status"
+    $entity_wrapper = entity_metadata_wrapper('assignment', $entity_or_bundle);
+    $assigned_user = $entity_wrapper->field_assignment_assigned_user->value();
+    if (user_access($op . ' own assigned assignments', $account) && $account->uid == $assigned_user->uid) {
+      $access = TRUE;
+    }
+  }
+  
+  return $access;
 }

@@ -278,6 +278,7 @@ function imagex_editorial_desk_default_page_manager_pages() {
       ),
       'exposed' => array(
         'field_assignment_status_value' => array(
+          'draft' => 'draft',
           'assigned' => 'assigned',
           'pending' => 'pending',
           'complete' => 'complete',
