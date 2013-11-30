@@ -49,7 +49,7 @@ function imagex_editorial_desk_entity_info_alter(&$entity_info) {
 function imagex_editorial_desk_form_alter(&$form, &$form_state, $form_id) {
   // Hijack assignment entity validation
   // Rules form support isn't sufficient so do this manually
-  if ($form_id == 'eck__entity__form_edit_assignment_assignment') {
+  if ($form_id == 'eck__entity__form_edit_assignment_assignment' || $form_id == 'eck__entity__form_add_assignment_assignment') {
     $form['#validate'][] = 'imagex_editorial_desk_assignment_validate';
   }
 }
