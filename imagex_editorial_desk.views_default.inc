@@ -23,7 +23,9 @@ function imagex_editorial_desk_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Editorial Desk';
-  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'View Full Editorial Calendar';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'eck list assignment assignment entities';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -260,6 +262,8 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['fields']['field_assignment_assigned_user']['id'] = 'field_assignment_assigned_user';
   $handler->display->display_options['fields']['field_assignment_assigned_user']['table'] = 'field_data_field_assignment_assigned_user';
   $handler->display->display_options['fields']['field_assignment_assigned_user']['field'] = 'field_assignment_assigned_user';
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['element_label_type'] = 'span';
   $handler->display->display_options['fields']['field_assignment_assigned_user']['settings'] = array(
     'link' => 1,
   );
