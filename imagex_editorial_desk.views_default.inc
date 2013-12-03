@@ -201,7 +201,7 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Editorial Desk Upcoming ListContent pane */
-  $handler = $view->new_display('panel_pane', 'Editorial Desk Upcoming ListContent pane', 'panel_pane_2');
+  $handler = $view->new_display('panel_pane', 'Editorial Desk Upcoming List Content pane', 'panel_pane_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Upcoming Editorial Deadlines';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
