@@ -23,7 +23,9 @@ function imagex_editorial_desk_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Editorial Desk';
-  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['use_more_always'] = TRUE;
+  $handler->display->display_options['use_more_text'] = 'View Full Editorial Calendar';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'eck list assignment assignment entities';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -199,7 +201,7 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['inherit_panels_path'] = '1';
 
   /* Display: Editorial Desk Upcoming ListContent pane */
-  $handler = $view->new_display('panel_pane', 'Editorial Desk Upcoming ListContent pane', 'panel_pane_2');
+  $handler = $view->new_display('panel_pane', 'Editorial Desk Upcoming List Content pane', 'panel_pane_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Upcoming Editorial Deadlines';
   $handler->display->display_options['defaults']['link_display'] = FALSE;
@@ -260,6 +262,8 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['fields']['field_assignment_assigned_user']['id'] = 'field_assignment_assigned_user';
   $handler->display->display_options['fields']['field_assignment_assigned_user']['table'] = 'field_data_field_assignment_assigned_user';
   $handler->display->display_options['fields']['field_assignment_assigned_user']['field'] = 'field_assignment_assigned_user';
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['element_label_type'] = 'span';
   $handler->display->display_options['fields']['field_assignment_assigned_user']['settings'] = array(
     'link' => 1,
   );
