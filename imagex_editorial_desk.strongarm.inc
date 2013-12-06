@@ -37,5 +37,7 @@ function imagex_editorial_desk_strongarm() {
   );
   $export['field_bundle_settings_assignment__assignment'] = $strongarm;
 
+  features_alter_code('variable', $export);
+
   return $export;
 }

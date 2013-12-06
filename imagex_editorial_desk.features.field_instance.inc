@@ -315,5 +315,7 @@ function imagex_editorial_desk_field_default_field_instances() {
   t('The deadline date that this assignment should be completed by.');
   t('The user who will be assigned to complete this assignment.');
 
+  features_alter_code('field_instance', $field_instances);
+
   return $field_instances;
 }

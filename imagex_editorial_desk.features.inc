@@ -35,6 +35,9 @@ function imagex_editorial_desk_eck_bundle_info() {
   'label' => 'Assignment',
 ),
   );
+
+  features_alter_code('eck_bundle', $items);
+
   return $items;
 }
 
@@ -75,5 +78,8 @@ $items = array(
   ),
 ),
   );
+
+  features_alter_code('eck_entity_type', $items);
+
   return $items;
 }

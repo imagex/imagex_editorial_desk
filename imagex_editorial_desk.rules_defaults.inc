@@ -237,5 +237,8 @@ function imagex_editorial_desk_default_rules_configuration() {
       "PROVIDES VARIABLES" : [ "validation_fail" ]
     }
   }');
+
+  features_alter_code('rules_config', $items);
+
   return $items;
 }
