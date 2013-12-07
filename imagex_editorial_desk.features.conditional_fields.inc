@@ -262,5 +262,7 @@ function imagex_editorial_desk_conditional_fields_default_fields() {
     ),
   );
 
+  features_alter_code('conditional_fields', $items);
+
   return $items;
 }
