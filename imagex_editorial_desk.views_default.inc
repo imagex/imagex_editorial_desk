@@ -379,7 +379,7 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = 'Assignment';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = 'assignment/assignment/[id]';
-  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Assignment: Assigned User */
   $handler->display->display_options['fields']['field_assignment_assigned_user']['id'] = 'field_assignment_assigned_user';
@@ -942,7 +942,7 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = 'assignment/assignment/[id]';
-  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Assignment: Status */
   $handler->display->display_options['fields']['field_assignment_status']['id'] = 'field_assignment_status';
@@ -1114,7 +1114,7 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = 'assignment/assignment/[id]';
-  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
@@ -1136,7 +1136,7 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['fields']['field_assignment_deadline']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_assignment_deadline']['element_label_type'] = 'span';
   $handler->display->display_options['fields']['field_assignment_deadline']['settings'] = array(
-    'format_type' => 'short',
+    'format_type' => 'long',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
