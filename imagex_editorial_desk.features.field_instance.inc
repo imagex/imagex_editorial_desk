@@ -28,9 +28,12 @@ function imagex_editorial_desk_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'assignment',
@@ -58,8 +61,9 @@ function imagex_editorial_desk_field_default_field_instances() {
   $field_instances['assignment-assignment-field_assignment_content_node'] = array(
     'bundle' => 'assignment',
     'default_value' => NULL,
+    'default_value_function' => '',
     'deleted' => 0,
-    'description' => 'The content which should be worked on as part of this assignment. If this content doesn\'t exist yet you can create it by clicking the "plus" icon on the right side which will allow you to create new content and then redirect you back to this form (existing data is saved).',
+    'description' => 'The content which should be worked on as part of this assignment. If this content doesn\'t exist yet you can create it by clicking the "plus" icon above which will allow you to create new content and then redirect you back to this form (existing data is saved).',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -72,9 +76,12 @@ function imagex_editorial_desk_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'assignment',
@@ -84,6 +91,11 @@ function imagex_editorial_desk_field_default_field_instances() {
     'label' => 'Assignment Content',
     'required' => 1,
     'settings' => array(
+      'behaviors' => array(
+        'prepopulate' => array(
+          'status' => 0,
+        ),
+      ),
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -121,9 +133,16 @@ function imagex_editorial_desk_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'assignment',
@@ -170,8 +189,9 @@ function imagex_editorial_desk_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 0,
       ),
     ),
@@ -233,9 +253,10 @@ function imagex_editorial_desk_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'list_default',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'assignment',
@@ -272,13 +293,13 @@ function imagex_editorial_desk_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'assignment',
@@ -311,7 +332,7 @@ function imagex_editorial_desk_field_default_field_instances() {
   t('Description of the assignment.');
   t('Notify Assigned User');
   t('Status');
-  t('The content which should be worked on as part of this assignment. If this content doesn\'t exist yet you can create it by clicking the "plus" icon on the right side which will allow you to create new content and then redirect you back to this form (existing data is saved).');
+  t('The content which should be worked on as part of this assignment. If this content doesn\'t exist yet you can create it by clicking the "plus" icon above which will allow you to create new content and then redirect you back to this form (existing data is saved).');
   t('The deadline date that this assignment should be completed by.');
   t('The user who will be assigned to complete this assignment.');
 

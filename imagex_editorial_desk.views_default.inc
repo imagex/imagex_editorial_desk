@@ -41,6 +41,11 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['style_options']['theme_style'] = '1';
   $handler->display->display_options['style_options']['max_items'] = '0';
   $handler->display->display_options['row_plugin'] = 'calendar_entity';
+  $handler->display->display_options['row_options']['inline'] = array(
+    'delete_link' => 'delete_link',
+    'edit_link' => 'edit_link',
+  );
+  $handler->display->display_options['row_options']['separator'] = ' | ';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   /* Relationship: Assignment: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -178,6 +183,85 @@ function imagex_editorial_desk_views_default_views() {
 
   /* Display: Editorial Desk Content pane */
   $handler = $view->new_display('panel_pane', 'Editorial Desk Content pane', 'panel_pane_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Assignment: Id */
+  $handler->display->display_options['fields']['id']['id'] = 'id';
+  $handler->display->display_options['fields']['id']['table'] = 'eck_assignment';
+  $handler->display->display_options['fields']['id']['field'] = 'id';
+  $handler->display->display_options['fields']['id']['label'] = '';
+  $handler->display->display_options['fields']['id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['id']['element_label_colon'] = FALSE;
+  /* Field: Assignment: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'eck_assignment';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = 'assignment/assignment/[id]';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Assignment: Status */
+  $handler->display->display_options['fields']['field_assignment_status']['id'] = 'field_assignment_status';
+  $handler->display->display_options['fields']['field_assignment_status']['table'] = 'field_data_field_assignment_status';
+  $handler->display->display_options['fields']['field_assignment_status']['field'] = 'field_assignment_status';
+  $handler->display->display_options['fields']['field_assignment_status']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_assignment_status']['element_label_type'] = 'span';
+  /* Field: Assignment: Deadline */
+  $handler->display->display_options['fields']['field_assignment_deadline']['id'] = 'field_assignment_deadline';
+  $handler->display->display_options['fields']['field_assignment_deadline']['table'] = 'field_data_field_assignment_deadline';
+  $handler->display->display_options['fields']['field_assignment_deadline']['field'] = 'field_assignment_deadline';
+  $handler->display->display_options['fields']['field_assignment_deadline']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['field_assignment_deadline']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_assignment_deadline']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'both',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Assignment: Created */
+  $handler->display->display_options['fields']['created']['id'] = 'created';
+  $handler->display->display_options['fields']['created']['table'] = 'eck_assignment';
+  $handler->display->display_options['fields']['created']['field'] = 'created';
+  $handler->display->display_options['fields']['created']['date_format'] = 'short';
+  /* Field: Assignment: Description */
+  $handler->display->display_options['fields']['field_assignment_description']['id'] = 'field_assignment_description';
+  $handler->display->display_options['fields']['field_assignment_description']['table'] = 'field_data_field_assignment_description';
+  $handler->display->display_options['fields']['field_assignment_description']['field'] = 'field_assignment_description';
+  $handler->display->display_options['fields']['field_assignment_description']['type'] = 'text_trimmed';
+  $handler->display->display_options['fields']['field_assignment_description']['settings'] = array(
+    'trim_length' => '50',
+  );
+  /* Field: Assignment: Assigned User */
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['id'] = 'field_assignment_assigned_user';
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['table'] = 'field_data_field_assignment_assigned_user';
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['field'] = 'field_assignment_assigned_user';
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_assignment_assigned_user']['settings'] = array(
+    'link' => 1,
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Assigned by';
+  $handler->display->display_options['fields']['name']['element_type'] = 'span';
+  $handler->display->display_options['fields']['name']['element_label_type'] = 'span';
+  /* Field: Assignment: Delete link */
+  $handler->display->display_options['fields']['delete_link']['id'] = 'delete_link';
+  $handler->display->display_options['fields']['delete_link']['table'] = 'eck_assignment';
+  $handler->display->display_options['fields']['delete_link']['field'] = 'delete_link';
+  $handler->display->display_options['fields']['delete_link']['label'] = '';
+  $handler->display->display_options['fields']['delete_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['delete_link']['text'] = 'Delete';
+  /* Field: Assignment: Edit link */
+  $handler->display->display_options['fields']['edit_link']['id'] = 'edit_link';
+  $handler->display->display_options['fields']['edit_link']['table'] = 'eck_assignment';
+  $handler->display->display_options['fields']['edit_link']['field'] = 'edit_link';
+  $handler->display->display_options['fields']['edit_link']['label'] = '';
+  $handler->display->display_options['fields']['edit_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_link']['text'] = 'Edit';
   $handler->display->display_options['pane_category']['name'] = 'ImageX';
   $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 'use_pager';
@@ -439,7 +523,6 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = 'assignment/assignment/[id]';
-  $handler->display->display_options['fields']['title']['element_type'] = 'h4';
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Assignment: Status */
   $handler->display->display_options['fields']['field_assignment_status']['id'] = 'field_assignment_status';
@@ -454,7 +537,7 @@ function imagex_editorial_desk_views_default_views() {
   $handler->display->display_options['fields']['field_assignment_deadline']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_assignment_deadline']['element_label_type'] = 'span';
   $handler->display->display_options['fields']['field_assignment_deadline']['settings'] = array(
-    'format_type' => 'short',
+    'format_type' => 'long',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',

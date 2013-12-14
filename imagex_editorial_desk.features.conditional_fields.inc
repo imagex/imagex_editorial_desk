@@ -22,8 +22,8 @@ function imagex_editorial_desk_conditional_fields_default_fields() {
       'effect' => FALSE,
       'effect_options' => array(),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -79,13 +79,6 @@ function imagex_editorial_desk_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
       ),
       'element_edit' => array(
         1 => 1,
@@ -118,10 +111,6 @@ function imagex_editorial_desk_conditional_fields_default_fields() {
           3 => 0,
         ),
         4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
           1 => 1,
           3 => 0,
         ),
@@ -150,8 +139,8 @@ function imagex_editorial_desk_conditional_fields_default_fields() {
       'effect' => 'show',
       'effect_options' => array(),
       'element_view' => array(
-        1 => 1,
-        2 => 2,
+        1 => 0,
+        2 => 0,
         5 => 0,
         3 => 0,
         4 => 0,
@@ -207,13 +196,6 @@ function imagex_editorial_desk_conditional_fields_default_fields() {
           3 => 0,
           4 => 0,
         ),
-        8 => array(
-          1 => 1,
-          2 => 2,
-          5 => 0,
-          3 => 0,
-          4 => 0,
-        ),
       ),
       'element_edit' => array(
         1 => 1,
@@ -246,10 +228,6 @@ function imagex_editorial_desk_conditional_fields_default_fields() {
           3 => 0,
         ),
         4 => array(
-          1 => 1,
-          3 => 0,
-        ),
-        8 => array(
           1 => 1,
           3 => 0,
         ),

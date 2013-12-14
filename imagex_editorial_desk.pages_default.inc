@@ -65,16 +65,7 @@ function imagex_editorial_desk_default_page_manager_pages() {
     'contexts' => array(),
     'relationships' => array(),
     'access' => array(
-      'plugins' => array(
-        0 => array(
-          'name' => 'perm',
-          'settings' => array(
-            'perm' => 'access content overview',
-          ),
-          'context' => 'logged-in-user',
-          'not' => FALSE,
-        ),
-      ),
+      'plugins' => array(),
       'logic' => 'and',
     ),
   );
@@ -133,12 +124,12 @@ function imagex_editorial_desk_default_page_manager_pages() {
       'pager_id' => '0',
       'path' => 'admin/content/editorial-desk',
       'fields_override' => array(
-        'id' => 1,
+        'id' => 0,
         'title' => 1,
         'field_assignment_status' => 1,
-        'field_assignment_deadline' => 1,
-        'created' => 1,
-        'field_assignment_description' => 1,
+        'field_assignment_deadline' => 0,
+        'created' => 0,
+        'field_assignment_description' => 0,
         'field_assignment_assigned_user' => 1,
         'name' => 1,
         'delete_link' => 1,
@@ -291,7 +282,10 @@ function imagex_editorial_desk_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'standard-bean standard-bean-full',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();

@@ -48,4 +48,3 @@ features[user_permission][] = update own assigned assignments
 features[user_permission][] = view field_assignment_content_node
 features[user_permission][] = view own assigned assignments
 features[user_permission][] = view own field_assignment_content_node
-project path = profiles/imagex_installkit/modules/imagex/modules/imagex_editorial_desk/modules
