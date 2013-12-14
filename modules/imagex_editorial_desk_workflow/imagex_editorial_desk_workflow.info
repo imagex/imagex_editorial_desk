@@ -15,4 +15,3 @@ features[rules_config][] = rules_imagex_editorial_desk_update_assignment_status
 features[rules_config][] = rules_imagex_editorial_desk_update_assignment_status_nofity
 features_exclude[dependencies][views_bulk_operations] = views_bulk_operations
 features_exclude[dependencies][workbench_moderation] = workbench_moderation
-project path = profiles/imagex_installkit/modules/imagex/modules/imagex_editorial_desk/modules

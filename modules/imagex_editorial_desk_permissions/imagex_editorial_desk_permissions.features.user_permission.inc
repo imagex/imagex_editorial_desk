@@ -16,7 +16,7 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
     'roles' => array(
       'Content Administrator' => 'Content Administrator',
       'Content Manager' => 'Content Manager',
-      'Super User' => 'Super User',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
@@ -26,7 +26,9 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['delete own assigned assignments'] = array(
     'name' => 'delete own assigned assignments',
     'roles' => array(
-      'Super User' => 'Super User',
+      'Content Administrator' => 'Content Administrator',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
     ),
     'module' => 'imagex_editorial_desk',
@@ -36,7 +38,9 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck add assignment assignment entities'] = array(
     'name' => 'eck add assignment assignment entities',
     'roles' => array(
-      'Super User' => 'Super User',
+      'Content Administrator' => 'Content Administrator',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -46,7 +50,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck add assignment bundles'] = array(
     'name' => 'eck add assignment bundles',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -56,7 +59,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck add bundles'] = array(
     'name' => 'eck add bundles',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -66,7 +68,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck add entities'] = array(
     'name' => 'eck add entities',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -76,7 +77,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck add entity types'] = array(
     'name' => 'eck add entity types',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -86,7 +86,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck administer assignment assignment entities'] = array(
     'name' => 'eck administer assignment assignment entities',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -96,7 +95,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck administer assignment bundles'] = array(
     'name' => 'eck administer assignment bundles',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -115,7 +113,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck administer entities'] = array(
     'name' => 'eck administer entities',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -125,7 +122,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck administer entity types'] = array(
     'name' => 'eck administer entity types',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -135,7 +131,9 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck delete assignment assignment entities'] = array(
     'name' => 'eck delete assignment assignment entities',
     'roles' => array(
-      'Super User' => 'Super User',
+      'Content Administrator' => 'Content Administrator',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -145,7 +143,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck delete assignment bundles'] = array(
     'name' => 'eck delete assignment bundles',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -155,7 +152,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck delete bundles'] = array(
     'name' => 'eck delete bundles',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -165,7 +161,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck delete entities'] = array(
     'name' => 'eck delete entities',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -175,7 +170,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck delete entity types'] = array(
     'name' => 'eck delete entity types',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -185,7 +179,9 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck edit assignment assignment entities'] = array(
     'name' => 'eck edit assignment assignment entities',
     'roles' => array(
-      'Super User' => 'Super User',
+      'Content Administrator' => 'Content Administrator',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -195,7 +191,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck edit assignment bundles'] = array(
     'name' => 'eck edit assignment bundles',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -205,7 +200,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck edit bundles'] = array(
     'name' => 'eck edit bundles',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -215,7 +209,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck edit entities'] = array(
     'name' => 'eck edit entities',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -225,7 +218,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck edit entity types'] = array(
     'name' => 'eck edit entity types',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -235,9 +227,12 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck list assignment assignment entities'] = array(
     'name' => 'eck list assignment assignment entities',
     'roles' => array(
+      'Content Administrator' => 'Content Administrator',
       'Content Creator' => 'Content Creator',
-      'Super User' => 'Super User',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'eck',
   );
@@ -246,7 +241,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck list assignment bundles'] = array(
     'name' => 'eck list assignment bundles',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -256,7 +250,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck list bundles'] = array(
     'name' => 'eck list bundles',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -266,7 +259,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck list entities'] = array(
     'name' => 'eck list entities',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -285,8 +277,11 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck view assignment assignment entities'] = array(
     'name' => 'eck view assignment assignment entities',
     'roles' => array(
-      'Super User' => 'Super User',
+      'Content Administrator' => 'Content Administrator',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'eck',
   );
@@ -295,7 +290,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['eck view entities'] = array(
     'name' => 'eck view entities',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -307,7 +301,7 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
     'roles' => array(
       'Content Administrator' => 'Content Administrator',
       'Content Manager' => 'Content Manager',
-      'Super User' => 'Super User',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
@@ -319,7 +313,7 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
     'roles' => array(
       'Content Administrator' => 'Content Administrator',
       'Content Manager' => 'Content Manager',
-      'Super User' => 'Super User',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
@@ -328,14 +322,24 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   // Exported permission: 'entityconnect add button'.
   $permissions['entityconnect add button'] = array(
     'name' => 'entityconnect add button',
-    'roles' => array(),
+    'roles' => array(
+      'Content Administrator' => 'Content Administrator',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
+      'administrator' => 'administrator',
+    ),
     'module' => 'entityconnect',
   );
 
   // Exported permission: 'entityconnect edit button'.
   $permissions['entityconnect edit button'] = array(
     'name' => 'entityconnect edit button',
-    'roles' => array(),
+    'roles' => array(
+      'Content Administrator' => 'Content Administrator',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
+      'administrator' => 'administrator',
+    ),
     'module' => 'entityconnect',
   );
 
@@ -343,7 +347,6 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['manage assignment properties'] = array(
     'name' => 'manage assignment properties',
     'roles' => array(
-      'Super User' => 'Super User',
       'administrator' => 'administrator',
     ),
     'module' => 'eck',
@@ -353,7 +356,9 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['update own assigned assignments'] = array(
     'name' => 'update own assigned assignments',
     'roles' => array(
-      'Super User' => 'Super User',
+      'Content Administrator' => 'Content Administrator',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
     ),
     'module' => 'imagex_editorial_desk',
@@ -366,8 +371,9 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
       'Content Administrator' => 'Content Administrator',
       'Content Creator' => 'Content Creator',
       'Content Manager' => 'Content Manager',
-      'Super User' => 'Super User',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
@@ -376,9 +382,12 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
   $permissions['view own assigned assignments'] = array(
     'name' => 'view own assigned assignments',
     'roles' => array(
+      'Content Administrator' => 'Content Administrator',
       'Content Creator' => 'Content Creator',
-      'Super User' => 'Super User',
+      'Content Manager' => 'Content Manager',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'imagex_editorial_desk',
   );
@@ -390,11 +399,14 @@ function imagex_editorial_desk_permissions_user_default_permissions() {
       'Content Administrator' => 'Content Administrator',
       'Content Creator' => 'Content Creator',
       'Content Manager' => 'Content Manager',
-      'Super User' => 'Super User',
+      'Content Moderator' => 'Content Moderator',
       'administrator' => 'administrator',
+      'authenticated user' => 'authenticated user',
     ),
     'module' => 'field_permissions',
   );
+
+  features_alter_code('user_permission', $permissions);
 
   return $permissions;
 }
