@@ -40,7 +40,9 @@ function imagex_editorial_desk_permission() {
  * Implements hook_entity_info_alter().
  */
 function imagex_editorial_desk_entity_info_alter(&$entity_info) {
-  $entity_info['assignment']['access callback'] = 'imagex_editorial_desk_assignment_entity_access';
+  if (!empty($entity_info['assignment'])) {
+    $entity_info['assignment']['access callback'] = 'imagex_editorial_desk_assignment_entity_access';
+  }
 }
 
 /**
