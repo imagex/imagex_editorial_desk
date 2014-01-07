@@ -10,7 +10,7 @@ include_once 'imagex_editorial_desk.features.inc';
  * Implements hook_ctools_plugin_directory().
  */
 function imagex_editorial_desk_ctools_plugin_directory($owner, $plugin_type) {
-  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+  if ($owner == 'ctools' && ($plugin_type == 'content_types' || $plugin_type == 'access')) {
     return 'plugins/' . $plugin_type;
   }
 }

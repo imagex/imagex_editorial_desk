@@ -326,6 +326,12 @@ function imagex_editorial_desk_default_page_manager_pages() {
         ),
         'not' => FALSE,
       ),
+      2 => array(
+        'name' => 'node_has_assignments_access',
+        'settings' => NULL,
+        'not' => FALSE,
+        'context' => 'argument_entity_id:node_1',
+      ),
     ),
     'logic' => 'and',
   );
